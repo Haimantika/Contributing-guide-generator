@@ -43,37 +43,49 @@
        
       </div>
       <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('generateButton').addEventListener('click', async (event) => {
-          event.preventDefault(); // Prevent the form from submitting traditionally
-          const prompt = document.getElementById('prompt').value;
-          try {
-            const response = await fetch('https://api.openai.com/v1/completions', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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' // Replace with your actual OpenAI API Key
-              },
-              body: JSON.stringify({
-                model: 'gpt-3.5-turbo-instruct',
-                prompt: prompt,
-                max_tokens: 1000
-              })
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+          const generateButton = document.getElementById('generateButton');
+          generateButton.addEventListener('click', async (event) => {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+            const prompt = document.getElementById('prompt').value;
       
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
+            // Disable the button and apply greyed-out style
+            generateButton.disabled = true;
+            generateButton.classList.add('bg-gray-400', 'hover:bg-gray-400'); // Add greyed-out style classes
+      
+            try {
+              const response = await fetch('https://api.openai.com/v1/completions', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer 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' // Replace with your actual OpenAI API Key
+                },
+                body: JSON.stringify({
+                  model: 'gpt-3.5-turbo-instruct',
+                  prompt: prompt,
+                  max_tokens: 1000
+                })
+              });
+      
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+      
+              const data = await response.json();
+              document.getElementById('guideOutput').innerText = data.choices[0].text;
+            } catch (error) {
+              console.error('Error:', error);
+              document.getElementById('guideOutput').innerText = 'Error generating text';
+            } finally {
+              // Re-enable the button and remove greyed-out style
+              generateButton.disabled = false;
+              generateButton.classList.remove('bg-gray-400', 'hover:bg-gray-400'); // Remove greyed-out style classes
             }
-      
-            const data = await response.json();
-            document.getElementById('guideOutput').innerText = data.choices[0].text;
-          } catch (error) {
-            console.error('Error:', error);
-            document.getElementById('guideOutput').innerText = 'Error generating text';
-          }
+          });
         });
-      });
-    </script>
+      </script>
+      
+      
     </div>
   </div>
 </body>
