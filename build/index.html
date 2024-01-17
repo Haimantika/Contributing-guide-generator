@@ -28,6 +28,7 @@
             placeholder="Enter your prompt"
             id="prompt"
           />
+          <p class="mt-2 text-sm text-gray-500">Example prompt: Help me generate a contributing guide for my QR code generator project</p>
         </div>
         <div>
           <button
@@ -48,6 +49,12 @@
           generateButton.addEventListener('click', async (event) => {
             event.preventDefault(); // Prevent the form from submitting traditionally
             const prompt = document.getElementById('prompt').value;
+
+              // Check if the prompt includes the phrase "contributing guide"
+            if (!prompt.toLowerCase().includes("contributing guide")) {
+              alert("Please include 'contributing guide' in your prompt.");
+              return; // Exit the function if the phrase is not included
+          }
       
             // Disable the button and apply greyed-out style
             generateButton.disabled = true;
