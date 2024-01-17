@@ -50,11 +50,23 @@
             event.preventDefault(); // Prevent the form from submitting traditionally
             const prompt = document.getElementById('prompt').value;
 
-              // Check if the prompt includes the phrase "contributing guide"
-            if (!prompt.toLowerCase().includes("contributing guide")) {
-              alert("Please include 'contributing guide' in your prompt.");
-              return; // Exit the function if the phrase is not included
-          }
+            // List of common misspellings or variations
+            const validPhrases = [
+              "contributing guide",
+              "contributeing guide",
+              "contributing gide",
+              "contirbution guide",
+              "contribution"
+          // Add more variations as needed
+        ];
+
+        // Check if the prompt includes any of the valid phrases
+          const isValidPrompt = validPhrases.some(phrase => prompt.includes(phrase));
+          if (!isValidPrompt) {
+            alert("Please include 'contributing guide' or a similar phrase in your prompt.");
+            return; // Exit the function if no valid phrase is found
+      }
+
       
             // Disable the button and apply greyed-out style
             generateButton.disabled = true;
