@@ -18,3 +18,6 @@ You can find the live demo [here](https://x.com/HaimantikaM/status/1747638951094
 
 ## Note
 - The project is hosted here - https://guidemaster.xyz/ , but you might get the following error: `Error generating text` as we have disabled the API.
+
+## Coming soon:
+A blog on how I built it with just HTML,TailwindCSS and a little JavaScript.
