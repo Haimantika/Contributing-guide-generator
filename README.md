@@ -17,4 +17,4 @@ GuideMaster is a contributing guide generator app, that can help you write the C
 You can find the live demo [here](https://x.com/HaimantikaM/status/1747638951094141202?s=20).
 
 ## Note
-- The project is hosted here - https://guidemaster.xyz/ , but you might get the following error: `Error generating text` as we have crossed the API limit.
+- The project is hosted here - https://guidemaster.xyz/ , but you might get the following error: `Error generating text` as we have disabled the API.
