@@ -81,7 +81,7 @@
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
-                  'Authorization': 'Bearer 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' // Replace with your actual OpenAI API Key
+                  'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` // Replace with your actual OpenAI API Key
                 },
                 body: JSON.stringify({
                   model: 'gpt-3.5-turbo-instruct',
