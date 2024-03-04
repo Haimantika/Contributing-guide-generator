@@ -4,6 +4,7 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
+    "start": "open index.html",
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch",
     "prettier": "npx prettier --write **/*.html"
   },
@@ -15,7 +16,9 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.1.1",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.3.2",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2",
     "openai": "^4.24.5"
   }
 }
